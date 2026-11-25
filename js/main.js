@@ -28,7 +28,7 @@ var sk=$('#skills-list');if(sk)sk.innerHTML=SITE.skills.map(function(s){return '
 var cv=$('#cv');if(cv){if(SITE.cv)cv.href=SITE.cv;else cv.hidden=true}
 var sv=$('#svc');if(sv){sv.innerHTML=SITE.services.map(function(s,i){return '<div class="svc-item'+(i===1?' open':'')+'"><div class="svc-row"><span class="n">0'+(i+1)+'</span><h3>'+s.t+'</h3><span class="go">←</span></div><div class="svc-body"><div><div class="svc-tags">'+s.tags.map(function(t){return '<span>'+t+'</span>'}).join('')+'</div><p>'+s.d+'</p></div></div></div>'}).join('');
  sv.onclick=function(e){var it=e.target.closest('.svc-item');if(!it)return;var was=it.classList.contains('open');sv.querySelectorAll('.svc-item').forEach(function(x){x.classList.remove('open')});if(!was)it.classList.add('open')}}
-var mq=$('#mq');if(mq){var it=['تصميم كتب','عروض تقديمية','أغلفة','هوية بصرية','تنسيق','طباعة'],h='';for(var k=0;k<4;k++)it.forEach(function(x){h+='<span>'+x+'</span><em>✦</em>'});mq.innerHTML=h}
+var mq=$('#mq');if(mq){var it=['تصميم كتب','عروض تقديمية','أغلفة','تنسيق','طباعة'],h='';for(var k=0;k<4;k++)it.forEach(function(x){h+='<span>'+x+'</span><em>✦</em>'});mq.innerHTML=h}
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');
  e.target.querySelectorAll('[data-n]').forEach(function(c){var n=+c.dataset.n,i=0,s=Math.max(1,Math.ceil(n/40)),id=setInterval(function(){i=Math.min(n,i+s);c.textContent=i;if(i>=n)clearInterval(id)},35)});io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=(i%3)*.1+'s';io.observe(el)});
